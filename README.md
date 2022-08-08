@@ -1,7 +1,7 @@
 FAZENDO DOWNLOAD DO INSTALADOR & INICIANDO A PRIMEIRA INSTALAÇÃO (USAR SOMENTE PARA PRIMEIRA INSTALAÇÃO):
 
 ```bash
-sudo apt install -y git && git clone https://github.com/daniloriquenateste/instaladornovo01.git && sudo chmod -R 777 instaladornovo01 && cd instaladornovo01 && sudo ./install_primaria
+sudo apt install -y git && git clone https://github.com/jaiminho88/instaladornovo01.git && sudo chmod -R 777 instaladornovo01 && cd instaladornovo01 && sudo ./install_primaria
 ```
 
 ACESSANDO DIRETORIO DO INSTALADOR & INICIANDO INSTALAÇÕES ADICIONAIS (USAR ESTE COMANDO PARA SEGUNDA OU MAIS INSTALAÇÃO:
