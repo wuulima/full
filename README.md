@@ -6,6 +6,6 @@ sudo apt install -y git && git clone https://github.com/Andresilvia/instalodorde
 
 ACESSANDO DIRETORIO DO INSTALADOR & INICIANDO INSTALAÇÕES ADICIONAIS (USAR ESTE COMANDO PARA SEGUNDA OU MAIS INSTALAÇÃO:
 ```bash
-cd && rm -rf instalodordeploy && git clone https://github.com/Andresilvia/instalodordeploy.git && sudo chmod -R 777 .instalodordeploy && cd instalodordeploy && sudo ./install_instancia
+cd && rm -rf instalodordeploy && git clone https://github.com/Andresilvia/instalodordeploy.git && sudo chmod -R 777 instalodordeploy && cd instalodordeploy && sudo ./install_instancia
 ```
 
