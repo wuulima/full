@@ -1,10 +1,10 @@
-FAZENDO DOWNLOAD DO INSTALADOR & INICIANDO A PRIMEIRA INSTALAÇÃO (USAR SOMENTE PARA PRIMEIRA INSTALAÇÃO):
+DOWNLOAD DO INSTALADOR & INICIANDO A PRIMEIRA INSTALAÇÃO:
 
 ```bash
 sudo apt install -y git && git clone https://github.com/VespertineWeb/FullInstaller.git && sudo chmod -R 777 FullInstaller && cd FullInstaller && sudo ./install_primaria
 ```
 
-ACESSANDO DIRETORIO DO INSTALADOR & INICIANDO INSTALAÇÕES ADICIONAIS (USAR ESTE COMANDO PARA SEGUNDA OU MAIS INSTALAÇÃO:
+SEGUNDA OU MAIS INSTALAÇÕES:
 ```bash
 cd ./FullInstaller && sudo ./install_instancia
 ```
