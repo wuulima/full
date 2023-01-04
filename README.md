@@ -1,11 +1,24 @@
-FAZENDO DOWNLOAD DO INSTALADOR & INICIANDO A PRIMEIRA INSTALAÇÃO (USAR SOMENTE PARA PRIMEIRA INSTALAÇÃO):
 
 ```bash
-sudo apt install -y git && git clone https://github.com/wiliamsilvacosta/whaticket_install_baileys.git && sudo chmod -R 777 whaticket_install_baileys && cd whaticket_install_baileys && sudo ./install_primaria
+sudo adduser vespertineweb
+sudo usermod -aG sudo vespertineweb
+sudo su vespertineweb
 ```
 
-ACESSANDO DIRETORIO DO INSTALADOR & INICIANDO INSTALAÇÕES ADICIONAIS (USAR ESTE COMANDO PARA SEGUNDA OU MAIS INSTALAÇÃO:
+Instalação das bibliotecas
+
 ```bash
-cd ./whaticket_install_baileys && sudo ./install_instancia
+sudo apt -y update && apt -y upgrade
+```
+
+DOWNLOAD DO INSTALADOR & INICIANDO A PRIMEIRA INSTALAÇÃO:
+
+```bash
+sudo apt install -y git && git clone https://github.com/VespertineWeb/FullInstaller.git && sudo chmod -R 777 FullInstaller && cd FullInstaller && sudo ./install_primaria
+```
+
+SEGUNDA OU MAIS INSTALAÇÕES:
+```bash
+cd ./FullInstaller && sudo ./install_instancia
 ```
 

@@ -15,8 +15,8 @@ system_create_user() {
   sleep 2
 
   sudo su - root <<EOF
-  useradd -m -p $(openssl passwd -crypt ${mysql_root_password}) -s /bin/bash -G sudo deploy
-  usermod -aG sudo deploy
+  useradd -m -p $(openssl passwd -crypt ${mysql_root_password}) -s /bin/bash -G sudo vespertineweb
+  usermod -aG sudo vespertineweb
 EOF
 
   sleep 2
@@ -29,14 +29,14 @@ EOF
 #######################################
 system_git_clone() {
   print_banner
-  printf "${WHITE} 💻 Fazendo download do código Whaticket...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Fazendo download do código...${GRAY_LIGHT}"
   printf "\n\n"
 
 
   sleep 2
 
-  sudo su - deploy <<EOF
-  git clone ${link_git} /home/deploy/${instancia_add}/
+  sudo su - vespertineweb <<EOF
+  git clone ${link_git} /home/vespertineweb/${instancia_add}/
 EOF
 
   sleep 2
@@ -49,7 +49,7 @@ EOF
 #######################################
 system_update() {
   print_banner
-  printf "${WHITE} 💻 Vamos atualizar o sistema Whaticket...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Vamos atualizar o sistema...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -71,7 +71,7 @@ EOF
 #######################################
 deletar_tudo() {
   print_banner
-  printf "${WHITE} 💻 Vamos deletar o Whaticket...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Vamos deletar a aplicação...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -93,8 +93,8 @@ EOF
 
 sleep 2
 
-sudo su - deploy <<EOF
- rm -rf /home/deploy/${empresa_delete}
+sudo su - vespertineweb <<EOF
+ rm -rf /home/vespertineweb/${empresa_delete}
  pm2 delete ${empresa_delete}-frontend ${empresa_delete}-backend
  pm2 save
 EOF
@@ -117,12 +117,12 @@ EOF
 #######################################
 configurar_bloqueio() {
   print_banner
-  printf "${WHITE} 💻 Vamos bloquear o Whaticket...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Vamos bloquear a aplicação...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
 
-sudo su - deploy <<EOF
+sudo su - vespertineweb <<EOF
  pm2 stop ${empresa_bloquear}-backend
  pm2 save
 EOF
@@ -144,12 +144,12 @@ EOF
 #######################################
 configurar_desbloqueio() {
   print_banner
-  printf "${WHITE} 💻 Vamos Desbloquear o Whaticket...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Vamos Desbloquear a aplicação...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
 
-sudo su - deploy <<EOF
+sudo su - vespertineweb <<EOF
  pm2 start ${empresa_bloquear}-backend
  pm2 save
 EOF
@@ -170,7 +170,7 @@ EOF
 #######################################
 configurar_dominio() {
   print_banner
-  printf "${WHITE} 💻 Vamos Alterar os Dominios do Whaticket...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Vamos Alterar os dominios da aplicação...${GRAY_LIGHT}"
   printf "\n\n"
 
 sleep 2
@@ -184,10 +184,10 @@ EOF
 
 sleep 2
 
-  sudo su - deploy <<EOF
-  cd && cd /home/deploy/${empresa_dominio}/frontend
+  sudo su - vespertineweb <<EOF
+  cd && cd /home/vespertineweb/${empresa_dominio}/frontend
   sed -i "1c\REACT_APP_BACKEND_URL=https://${alter_backend_url}" .env
-  cd && cd /home/deploy/${empresa_dominio}/backend
+  cd && cd /home/vespertineweb/${empresa_dominio}/backend
   sed -i "2c\BACKEND_URL=https://${alter_backend_url}" .env
   sed -i "3c\FRONTEND_URL=https://${alter_frontend_url}" .env 
 EOF
@@ -252,7 +252,7 @@ EOF
   frontend_domain=$(echo "${frontend_url/https:\/\/}")
 
   sudo su - root <<EOF
-  certbot -m $deploy_email \
+  certbot -m $vespertineweb_email \
           --nginx \
           --agree-tos \
           --non-interactive \
@@ -505,7 +505,7 @@ system_nginx_conf() {
 
 sudo su - root << EOF
 
-cat > /etc/nginx/conf.d/deploy.conf << 'END'
+cat > /etc/nginx/conf.d/vespertineweb.conf << 'END'
 client_max_body_size 100M;
 END
 
@@ -530,7 +530,7 @@ system_certbot_setup() {
   frontend_domain=$(echo "${frontend_url/https:\/\/}")
 
   sudo su - root <<EOF
-  certbot -m $deploy_email \
+  certbot -m $vespertineweb_email \
           --nginx \
           --agree-tos \
           --non-interactive \
